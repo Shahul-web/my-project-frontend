@@ -4,7 +4,10 @@ const cors = require("cors");
 const path = require("path");
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: 'https://magenta-clafoutis-bb349d.netlify.app/' // or Netlify URL
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
