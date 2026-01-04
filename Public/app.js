@@ -1,7 +1,7 @@
 // Load and display tasks from the server
 async function loadTasks() {
   try {
-    const res = await fetch("http://localhost:3000/tasks");
+    const res = await fetch("https://my-project-myqi.onrender.com/tasks");
     if (!res.ok) throw new Error("Failed to fetch tasks");
 
     const tasks = await res.json();
@@ -50,7 +50,7 @@ async function deleteTask(id) {
     const taskId = parseInt(id, 10); // ensure it's a number
     if (isNaN(taskId)) return;       // sanity check
 
-    const res = await fetch(`http://localhost:3000/tasks/${taskId}`, {
+    const res = await fetch(`https://my-project-myqi.onrender.com/tasks/${taskId}`, {
       method: "DELETE"
     });
 
@@ -77,7 +77,7 @@ async function addTask() {
   if (!title) return; // ignore empty input
 
   try {
-    const res = await fetch("http://localhost:3000/tasks", {
+    const res = await fetch("https://my-project-myqi.onrender.com/tasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title })
@@ -99,7 +99,7 @@ async function updateTask(id, data) {
   if (isNaN(taskId)) return;
 
   try {
-    const res = await fetch(`http://localhost:3000/tasks/${taskId}`, {
+    const res = await fetch(`https://my-project-myqi.onrender.com/tasks/${taskId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
